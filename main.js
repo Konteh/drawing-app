@@ -21,10 +21,20 @@ clrs.forEach(clr => {
 
 let clearBtn = document.querySelector(".clear")
 clearBtn.addEventListener("click", () => {
-    // Clearning the entire canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 })
 
+// Saving drawing as image
+let saveBtn = document.querySelector(".save")
+saveBtn.addEventListener("click", () => {
+    let data = canvas.toDataURL("imag/png")
+    let a = document.createElement("a")
+    a.href = data
+    // what ever name you specify here
+    // the image will be saved as that name
+    a.download = "sketch.png"
+    a.click()
+})
 
 window.addEventListener("mousedown", (e) => draw = true)
 window.addEventListener("mouseup", (e) => draw = false)
